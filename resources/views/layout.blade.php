@@ -7,6 +7,8 @@
 <body>
   <div class="container-fluid">
   	@include('common.navbar')
+    @include('flash::message')
+
   	@yield('content')
   </div>
   @include('common.footer')
