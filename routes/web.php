@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', 'GroupController@index');
+Route::get('/', 'GroupsController@index');
 
-Route::resource('groups', 'GroupController');
+Route::resource('groups', 'GroupsController');

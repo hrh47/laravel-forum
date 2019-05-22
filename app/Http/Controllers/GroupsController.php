@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use Illuminate\Http\Request;
 
-class GroupController extends Controller
+class GroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -54,7 +54,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        //
+        return view('groups.show', compact('group'));
     }
 
     /**

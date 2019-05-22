@@ -17,7 +17,7 @@
 	      @foreach($groups as $group)
 	        <tr>
 	          <td>#</td>
-	          <td><a href="#">{{ $group->title }}</a></td>
+	          <td><a href="{{ route('groups.show', compact('group')) }}">{{ $group->title }}</a></td>
 	          <td>{{ $group->description }}</td>
 	          <td>
 	            <a href="#" class="btn btn-sm btn-default">編輯</a>
