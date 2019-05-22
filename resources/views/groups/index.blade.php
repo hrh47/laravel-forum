@@ -3,8 +3,7 @@
 @section('content')
 	<div class="col-md-12">
 	  <div class="group">
-	    <!-- <%= link_to("New group", new_group_path, class: "btn btn-primary pull-right") %> -->
-	    <a href="#" class="btn btn-primary pull-right">新增群組</a>
+	    <a href="{{ route('groups.create') }}" class="btn btn-primary pull-right">新增群組</a>
 	  </div>
 	  <table class="table table-hover">
 	    <thead>
@@ -15,7 +14,6 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <!-- <% @groups.each do |group| %> -->
 	      @foreach($groups as $group)
 	        <tr>
 	          <td>#</td>

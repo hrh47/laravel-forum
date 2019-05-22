@@ -4,7 +4,7 @@
 	<div class="col-md-4 col-md-offset-4">
 		<h2>新增討論版</h2>
 		<hr />
-		{!! Form::open() !!}
+		{!! Form::open(['route' => 'groups.store']) !!}
 			<div class="form-group">
 				{!! Form::label('title', 'Title') !!}
 				{!! Form::text('title', null, ['class' => 'form-control']) !!}			
