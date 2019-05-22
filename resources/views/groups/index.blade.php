@@ -20,7 +20,7 @@
 	          <td><a href="{{ route('groups.show', compact('group')) }}">{{ $group->title }}</a></td>
 	          <td>{{ $group->description }}</td>
 	          <td>
-	            <a href="#" class="btn btn-sm btn-default">編輯</a>
+	            <a href="{{ route('groups.edit', compact('group')) }}" class="btn btn-sm btn-default">編輯</a>
 	            <a href="#" class="btn btn-sm btn-default" data-method="delete" data-confirm="確定刪除？">刪除</a>
 	          </td>
 	        </tr>
