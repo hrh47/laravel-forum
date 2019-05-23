@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
-use Illuminate\Http\Request;
+use App\Http\Requests\GroupRequest;
 
 class GroupsController extends Controller
 {
@@ -35,7 +35,7 @@ class GroupsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GroupRequest $request)
     {
         $group = new Group($request->all());
         $group->save();
@@ -72,7 +72,7 @@ class GroupsController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
+    public function update(GroupRequest $request, Group $group)
     {
         $group->update($request->all());
 
