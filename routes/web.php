@@ -11,6 +11,9 @@
 |
 */
 
+
 Route::get('/', 'GroupsController@index');
 
 Route::resource('groups', 'GroupsController');
+
+Auth::routes();
