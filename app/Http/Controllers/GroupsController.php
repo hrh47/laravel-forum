@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Group;
 use App\Http\Requests\GroupRequest;
 
@@ -44,7 +45,7 @@ class GroupsController extends Controller
     public function store(GroupRequest $request)
     {
         $group = new Group($request->all());
-        $group->save();
+        Auth::user()->groups()->save($group);
 
         return redirect()->route('groups.index');
     }
