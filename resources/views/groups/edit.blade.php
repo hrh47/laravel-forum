@@ -5,7 +5,7 @@
 		<h2>新增討論版</h2>
 		<hr />
 		{!! Form::model($group, ['route' => ['groups.update', $group], 'method' => 'PUT']) !!}
-			@include('common.form')
+			@include('groups.form')
 		{!! Form::close() !!}
 	</div>
 @endsection

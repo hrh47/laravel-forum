@@ -14,10 +14,18 @@
           <a href="{{ route('login') }}" class="nav-link">登入</a>
         </li>
         @else
-        <li class="nav-item">
-          <a id="123" href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            登出
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Hi!, {{ Auth::user()->name }}
+            <b class="caret"></b>
           </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                登出
+              </a>
+            </li>
+          </ul>
         </li>
         <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none">
           @csrf

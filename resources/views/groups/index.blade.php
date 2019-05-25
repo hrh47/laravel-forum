@@ -11,6 +11,7 @@
 	        <td>#</td>
 	        <td>Title</td>
 	        <td>Description</td>
+	        <td>Creator</td>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -19,6 +20,7 @@
 	          <td>#</td>
 	          <td><a href="{{ route('groups.show', compact('group')) }}">{{ $group->title }}</a></td>
 	          <td>{{ $group->description }}</td>
+	          <td>{{ $group->user->name }}</td>
 	          <td>
 	            <a href="{{ route('groups.edit', compact('group')) }}" class="btn btn-sm btn-default">編輯</a>
 	            <a href="{{ route('groups.destroy', compact('group')) }}" class="btn btn-sm btn-default" data-method="delete" data-confirm="Are you sure?" data-token="{{csrf_token()}}">刪除</a>
