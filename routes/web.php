@@ -16,4 +16,6 @@ Route::get('/', 'GroupsController@index');
 
 Route::resource('groups', 'GroupsController');
 
+Route::resource('groups.posts', 'PostsController');
+
 Auth::routes();
