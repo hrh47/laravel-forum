@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Group;
 use App\Http\Requests\GroupRequest;
 
@@ -45,7 +44,7 @@ class GroupsController extends Controller
     public function store(GroupRequest $request)
     {
         $group = new Group($request->all());
-        Auth::user()->groups()->save($group);
+        auth()->user()->groups()->save($group);
 
         return redirect()->route('groups.index');
     }
@@ -69,6 +68,8 @@ class GroupsController extends Controller
      */
     public function edit(Group $group)
     {
+        $this->authorize('update', $group);
+
         return view('groups.edit', compact('group'));
     }
 
@@ -81,6 +82,8 @@ class GroupsController extends Controller
      */
     public function update(GroupRequest $request, Group $group)
     {
+        $this->authorize('update', $group);
+
         $group->update($request->all());
 
         return redirect()->route('groups.index');
@@ -94,6 +97,8 @@ class GroupsController extends Controller
      */
     public function destroy(Group $group)
     {
+        $this->authorize('update', $group);
+        
         $group->delete();
 
         return redirect()->route('groups.index');
