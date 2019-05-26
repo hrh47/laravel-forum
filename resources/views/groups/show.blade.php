@@ -3,6 +3,14 @@
 @section('content')
 	<div class="col-md-12">
 	  <div>
+	  	<span class="pull-right">
+	  		@if (auth()->user() && auth()->user()->isMemberOf($group))
+	  			<label class="label label-success">群組成員</label>
+	  		@else
+	  			<label class="label label-warning">不是群組成員</label>
+	  		@endif
+	  	</span>	  	
+
 	  	<a href="{{ route('groups.posts.create', compact('group')) }}" class="btn btn-default pull-right">
 	  		Write a Post
 	  	</a>

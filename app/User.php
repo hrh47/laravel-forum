@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Group')->withTimestamps();
     }
+
+    public function isMemberOf(Group $group)
+    {
+        return $this->participatedGroups->contains($group);
+    }
 }
