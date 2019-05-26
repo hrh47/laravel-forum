@@ -105,4 +105,28 @@ class GroupsController extends Controller
 
         return redirect()->route('groups.index');
     }
+
+    public function join(Group $group)
+    {
+        if(! auth()->user()->isMemberOf($group)) {
+            auth()->user()->join($group);
+            flash('加入本討論版成功！')->success()->important();
+        } else {
+            flash('你已經是本討論版的成員了！')->warning()->important();
+        }        
+
+        return redirect()->route('groups.show', compact('group'));
+    }
+
+    public function quit(Group $group)
+    {
+        if (auth()->user()->isMemberOf($group)) {
+            auth()->user()->quit($group);
+            flash('已退出本討論版！')->error()->important();
+        } else {
+            flash('你不是本討論版的成員，怎麼退出 XD')->warning()->important();
+        }
+
+        return redirect()->route('groups.show', compact('group'));
+    }
 }

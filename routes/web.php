@@ -15,6 +15,8 @@
 Route::get('/', 'GroupsController@index');
 
 Route::resource('groups', 'GroupsController');
+Route::post('/groups/{group}/join', ['as' => 'groups.join', 'uses' => 'GroupsController@join']);
+Route::post('/groups/{group}/quit', ['as' => 'groups.quit', 'uses' => 'GroupsController@quit']);
 
 Route::resource('groups.posts', 'PostsController');
 
