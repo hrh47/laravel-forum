@@ -57,7 +57,9 @@ class GroupsController extends Controller
      */
     public function show(Group $group)
     {
-        return view('groups.show', compact('group'));
+        $posts = $group->posts;
+
+        return view('groups.show', compact('group', 'posts'));
     }
 
     /**

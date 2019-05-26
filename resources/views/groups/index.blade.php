@@ -20,7 +20,7 @@
 	          <td>#</td>
 	          <td><a href="{{ route('groups.show', compact('group')) }}">{{ $group->title }}</a></td>
 	          <td>{{ $group->description }}</td>
-	          <td>{{ $group->user->name }}</td>
+	          <td>{{ $group->user->email }}</td>
 	          <td>
 	          	@can('update', $group)
 			          <a href="{{ route('groups.edit', compact('group')) }}" class="btn btn-sm btn-default">編輯</a>

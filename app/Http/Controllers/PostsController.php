@@ -7,15 +7,9 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  \App\Group  $group
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Group $group)
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
     /**
@@ -26,7 +20,7 @@ class PostsController extends Controller
      */
     public function create(Group $group)
     {
-        //
+        return view('posts.create', compact('group'));
     }
 
     /**
@@ -38,7 +32,12 @@ class PostsController extends Controller
      */
     public function store(Request $request, Group $group)
     {
-        //
+        $post = new Post($request->all());
+        $post->group()->associate($group);
+
+        auth()->user()->posts()->save($post);
+
+        return redirect()->route('groups.show', $group);
     }
 
     /**
