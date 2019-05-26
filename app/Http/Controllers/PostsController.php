@@ -78,7 +78,8 @@ class PostsController extends Controller
     public function destroy(Group $group, Post $post)
     {
         $post->delete();
+        flash('文章已經刪除')->error()->important();
 
-        return redirect()->route('groups.show', compact('group'));
+        return back();
     }
 }

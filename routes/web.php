@@ -20,6 +20,7 @@ Route::post('/groups/{group}/quit', ['as' => 'groups.quit', 'uses' => 'GroupsCon
 
 Route::group(['prefix' => 'account'], function() {
 	Route::get('groups', ['as' => 'account.groups.index', 'uses' => 'Account\GroupsController@index']);
+	Route::get('posts', ['as' => 'account.posts.index', 'uses' => 'Account\PostsController@index']);
 });
 
 Route::resource('groups.posts', 'PostsController', ['except' => ['index', 'show']]);

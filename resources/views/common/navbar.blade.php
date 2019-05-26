@@ -23,6 +23,9 @@
             <li>
               <a href="{{ route('account.groups.index') }}">My Groups</a>
             </li>
+            <li>
+              <a href="{{ route('account.posts.index') }}">My Posts</a>
+            </li>
             <li class="divider"></li>
             <li>
               <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
