@@ -29,6 +29,7 @@
 	  				<td>{{ $post->created_at }}</td>
 	  				<td>
 	  					<a href="{{ route('groups.posts.edit', compact('group', 'post')) }}" class="btn btn-sm btn-default">編輯</a>
+	  					<a href="{{ route('groups.posts.destroy', compact('group', 'post')) }}" class="btn btn-sm btn-default" data-method="delete" data-confirm="Are you sure?" data-token="{{csrf_token()}}">刪除</a>
 	  				</td>
 	  			</tr>
 	  		@endforeach

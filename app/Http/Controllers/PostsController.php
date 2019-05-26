@@ -77,6 +77,8 @@ class PostsController extends Controller
      */
     public function destroy(Group $group, Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('groups.show', compact('group'));
     }
 }
