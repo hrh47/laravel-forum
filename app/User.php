@@ -56,4 +56,14 @@ class User extends Authenticatable
     {
         return $this->participatedGroups->contains($group);
     }
+
+    public function join(Group $group)
+    {
+        $this->participatedGroups()->sync($group);
+    }
+
+    public function quit(Group $group)
+    {
+        $this->participatedGroups()->detach($group);
+    }
 }
