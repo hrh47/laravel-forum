@@ -27,6 +27,9 @@
 	  				<td>{{ $post->content }}</td>
 	  				<td>{{ $post->user->email }}</td>
 	  				<td>{{ $post->created_at }}</td>
+	  				<td>
+	  					<a href="{{ route('groups.posts.edit', compact('group', 'post')) }}" class="btn btn-sm btn-default">編輯</a>
+	  				</td>
 	  			</tr>
 	  		@endforeach
 	  	</tbody>
