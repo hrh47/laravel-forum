@@ -11,6 +11,7 @@ class GroupsController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('can:update,group')->only(['edit', 'update', 'destroy']);
     }
 
     /**
@@ -72,8 +73,6 @@ class GroupsController extends Controller
      */
     public function edit(Group $group)
     {
-        $this->authorize('update', $group);
-
         return view('groups.edit', compact('group'));
     }
 
@@ -86,8 +85,6 @@ class GroupsController extends Controller
      */
     public function update(GroupRequest $request, Group $group)
     {
-        $this->authorize('update', $group);
-
         $group->update($request->all());
 
         return redirect()->route('groups.index');
@@ -101,8 +98,6 @@ class GroupsController extends Controller
      */
     public function destroy(Group $group)
     {
-        $this->authorize('update', $group);
-        
         $group->delete();
 
         return redirect()->route('groups.index');
