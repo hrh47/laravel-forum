@@ -44,7 +44,9 @@ class GroupsController extends Controller
     public function store(GroupRequest $request)
     {
         $group = new Group($request->all());
+
         auth()->user()->groups()->save($group);
+        auth()->user()->join($group);
 
         return redirect()->route('groups.index');
     }
