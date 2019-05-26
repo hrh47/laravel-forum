@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\{Group, Post};
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -30,7 +31,7 @@ class PostsController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Group $group)
+    public function store(PostRequest $request, Group $group)
     {
         $post = new Post($request->all());
         $post->group()->associate($group);
@@ -60,9 +61,11 @@ class PostsController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group, Post $post)
+    public function update(PostRequest $request, Group $group, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        return redirect()->route('groups.show', compact('group'));
     }
 
     /**
