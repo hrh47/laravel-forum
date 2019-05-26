@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Post');
     }
+
+    public function participatedGroups()
+    {
+        return $this->belongsToMany('App\Group')->withTimestamps();
+    }
 }
