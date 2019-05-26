@@ -7,13 +7,13 @@
 	  		@if (auth()->user() && auth()->user()->isMemberOf($group))
 	  			<label class="label label-success">群組成員</label>
 	  			<a href="{{ route('groups.quit', compact('group')) }}" class="btn btn-default" onclick="event.preventDefault();document.getElementById('quit-form').submit();">Quit Group</a>
-	  			<form id="quit-form" method="POST" action="{{ route('groups.quit', compact('group')) }}">
+	  			<form id="quit-form" method="POST" action="{{ route('groups.quit', compact('group')) }}" style="display: none;">
 	  				@csrf
 	  			</form>
 	  		@else
 	  			<label class="label label-warning">不是群組成員</label>
 	  			<a href="{{ route('groups.join', compact('group')) }}" class="btn btn-default" onclick="event.preventDefault();document.getElementById('join-form').submit();">Join Group</a>
-	  			<form id="join-form" method="POST" action="{{ route('groups.join', compact('group')) }}">
+	  			<form id="join-form" method="POST" action="{{ route('groups.join', compact('group')) }}" style="display: none;">
 	  				@csrf
 	  			</form>
 	  		@endif

@@ -18,6 +18,10 @@ Route::resource('groups', 'GroupsController');
 Route::post('/groups/{group}/join', ['as' => 'groups.join', 'uses' => 'GroupsController@join']);
 Route::post('/groups/{group}/quit', ['as' => 'groups.quit', 'uses' => 'GroupsController@quit']);
 
-Route::resource('groups.posts', 'PostsController');
+Route::group(['prefix' => 'account'], function() {
+	Route::get('groups', ['as' => 'account.groups.index', 'uses' => 'Account\GroupsController@index']);
+});
+
+Route::resource('groups.posts', 'PostsController', ['except' => ['index', 'show']]);
 
 Auth::routes();
