@@ -57,7 +57,7 @@ class GroupsController extends Controller
      */
     public function show(Group $group)
     {
-        $posts = $group->posts;
+        $posts = $group->posts()->recent()->get();
 
         return view('groups.show', compact('group', 'posts'));
     }

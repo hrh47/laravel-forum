@@ -17,4 +17,9 @@ class Post extends Model
     {
     	return $this->belongsTo('App\Group');
     }
+
+    public function scopeRecent($query)
+    {
+    	return $query->orderBy('created_at', 'desc');
+    }
 }
