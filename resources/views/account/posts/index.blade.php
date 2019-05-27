@@ -16,7 +16,7 @@
 	      @foreach ($posts as $post)
 	        <tr>
 	        	<td>{{ $post->content }}</td>
-	        	<td>{{ $post->group['title'] }}</td>
+	        	<td>{{ $post->group->title }}</td>
 	        	<td>{{ $post->updated_at }}</td>
 	          <td>
 	          	<a href="{{ route('groups.posts.edit', ['group' => $post->group, 'post' => $post]) }}" class="btn btn-default btn-sm">編輯</a>
