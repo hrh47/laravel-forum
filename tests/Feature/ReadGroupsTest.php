@@ -17,11 +17,11 @@ class ReadGroupsTest extends TestCase
         $group2 = factory('App\Group')->create();
 
         $response = $this->get(route('groups.index'));
-        $response->assertSee($group1->title);
-        $response->assertSee($group1->description);
+        $response->assertSee($group1->title)
+            ->assertSee($group1->description);
 
-        $response->assertSee($group2->title);
-        $response->assertSee($group2->description);
+        $response->assertSee($group2->title)
+            ->assertSee($group2->description);
     }
 
     /** @test */
@@ -30,7 +30,7 @@ class ReadGroupsTest extends TestCase
         $group = factory('App\Group')->create();
 
         $response = $this->get(route('groups.show', $group));
-        $response->assertSee($group->title);
-        $response->assertSee($group->description);
+        $response->assertSee($group->title)
+            ->assertSee($group->description);
     }
 }
