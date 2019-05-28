@@ -37,4 +37,22 @@ class CreateGroupsTest extends TestCase
             'user_id' => $user->id
         ]);
     }
+
+    /** @test */
+    public function a_user_cannot_create_a_group_with_empty_title()
+    {
+        $user = $this->signIn();
+        $group = make('App\Group', [
+            'title' => '',
+            'user_id' => $user->id
+        ]);
+
+        $response = $this->post(route('groups.store'), $group->toArray());
+
+        $response->assertSessionHasErrors([
+            'title' => 'The title field is required.'
+        ]);
+
+        $this->assertDatabaseMissing('groups', $group->toArray());
+    }
 }

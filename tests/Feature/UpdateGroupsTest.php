@@ -40,6 +40,26 @@ class UpdateGroupsTest extends TestCase
     }
 
     /** @test */
+    public function a_user_cannot_update_his_group_with_empty_title()
+    {
+        $user = $this->signIn();
+        $group = create('App\Group', [
+            'user_id' => $user->id
+        ]);
+
+        $response = $this->put(route('groups.update', $group), [
+            'title' => '',
+            'description' => 'update description'
+        ]);
+
+        $response->assertSessionHasErrors([
+            'title' => 'The title field is required.'
+        ]);
+
+        $this->assertDatabaseHas('groups', $group->toArray());
+    }
+
+    /** @test */
     public function an_user_cannot_update_groups_belong_to_another_user()
     {
         $user = $this->signIn();
@@ -55,10 +75,6 @@ class UpdateGroupsTest extends TestCase
         $response = $this->put(route('groups.update', $group), $newGroup->toArray());
         $response->assertStatus(403);
 
-        $this->assertDatabaseHas('groups', [
-            'title' => $group->title,
-            'description' => $group->description,
-            'user_id' => $anotherUser->id
-        ]);
+        $this->assertDatabaseHas('groups', $group->toArray());
     }
 }
