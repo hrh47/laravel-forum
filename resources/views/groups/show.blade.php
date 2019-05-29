@@ -18,10 +18,11 @@
 	  			</form>
 	  		@endif
 	  	</span>	  	
-
-	  	<a href="{{ route('groups.posts.create', compact('group')) }}" class="btn btn-default pull-right">
-	  		Write a Post
-	  	</a>
+	  	@can('createPost', $group)
+		  	<a href="{{ route('groups.posts.create', compact('group')) }}" class="btn btn-default pull-right">
+		  		Write a Post
+		  	</a>
+	  	@endcan
 	  	@can('update', $group)
 	    	<a href="{{ route('groups.edit', compact('group')) }}" class="btn btn-primary pull-right">Edit</a>
 	    @endcan

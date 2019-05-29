@@ -12,6 +12,7 @@ class PostsController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('can:update,post')->only(['edit', 'update', 'destroy']);
+        $this->middleware('can:createPost,group')->only(['store']);
     }
 
     /**
@@ -22,6 +23,11 @@ class PostsController extends Controller
      */
     public function create(Group $group)
     {
+        if (! auth()->user()->isMemberOf($group)) {
+            flash('請先加入討論版再發文')->warning()->important();
+            return back();
+        }
+
         return view('posts.create', compact('group'));
     }
 
