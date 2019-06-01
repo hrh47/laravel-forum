@@ -53,4 +53,19 @@ class JoinGroupsTest extends TestCase
 
         $this->assertTrue(! $user->isMemberOf($group));
     }
+
+    /** @test */
+    public function when_a_user_create_a_group_then_he_will_be_a_group_member_automatically()
+    {
+        $user = $this->signIn();
+        $group = make('App\Group', [
+            'user_id' => $user->id
+        ]);
+
+        $response = $this->post(route('groups.store'), $group->toArray());
+
+        $group = \App\Group::where($group->toArray())->first();
+        $user = \App\User::find($user->id);
+        $this->assertTrue($user->isMemberOf($group));
+    }
 }
