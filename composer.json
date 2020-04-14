@@ -16,7 +16,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8",
         "php-parallel-lint/php-console-highlighter": "^0.4.0",
-        "symfony/http-foundation": "4.4.1"
+        "symfony/http-foundation": "4.4.7"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
