@@ -59,7 +59,7 @@ class User extends Authenticatable
 
     public function join(Group $group)
     {
-        $this->participatedGroups()->sync($group);
+        $this->participatedGroups()->syncWithoutDetaching($group);
     }
 
     public function quit(Group $group)
