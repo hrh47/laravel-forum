@@ -1,7 +1,7 @@
 # laravel-forum
 使用 laravel 寫的論壇，具備完整的功能測試及單元測試
 
-## [Demo](https://laravel-forum.andrewhsieh.me)
+## [Demo](https://laravel-forum.andrewhsieh.net)
 帳號：test@example.com
 密碼：test
 
